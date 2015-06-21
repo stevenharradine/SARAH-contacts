@@ -1,0 +1,33 @@
+section.contact {
+	background-color: grey;
+	color: black;
+	border: 1px solid black;
+	margin: 10px 2%;
+	padding: 10px 2%;
+	border-radius: 10px;
+
+	a.contact {
+		font-size: 1.5em;
+		display: block;
+		text-decoration: none;
+		color: black;
+	}
+}
+div.information {
+	section {
+		margin: 0 20px 20px;
+
+		h1 {
+			font-size: 1.25em;
+		}
+		h2 {
+			font-size: 1em;
+			margin: 20px 0 5px 0;
+		}
+	}
+
+	a.add {
+		float: right;
+		margin-top: -20px;
+	}
+}
