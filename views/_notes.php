@@ -6,9 +6,20 @@
 		<input type="hidden" name="contact_id" value="<?php echo $CONTACT_ID; ?>" />
 		
 		<div class="add">
-			<input type="text" name="title" id="title" placeholder="Title" />
-			<textarea name="note" id="note"></textarea>
-			<input type="submit" value="Save" />
+			<h2>Add</h2>
+			<table>
+				<tr>
+					<th><label for="title">Title:</label></th>
+					<td><input type="text" name="title" id="title" placeholder="aug 4th meeting" /></td>
+				</tr>
+				<tr>
+					<th><label for="note">Note:</label></th>
+					<td><textarea name="note" id="note" placeholder="Get flow charts from Stark"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="Save" /></td>
+				</tr>
+			</table>
 		</div>
 	</form>
 	

@@ -6,6 +6,7 @@
 		<input type="hidden" name="contact_id" value="<?php echo $CONTACT_ID; ?>" />
 		
 		<div class="add">
+			<h2>Add</h2>
 			<table>
 				<tr>
 					<th><label for="location">Location:</label></th>

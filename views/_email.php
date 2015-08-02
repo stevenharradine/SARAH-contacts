@@ -6,11 +6,20 @@
 		<input type="hidden" name="contact_id" value="<?php echo $CONTACT_ID; ?>" />
 		
 		<div class="add">
+			<h2>Add</h2>
 			<table>
 				<tr>
-					<td><input type="text" name="location" id="location" placeholder="Location" /></td>
+					<th><label>Location</label></th>
+					<td><input type="text" name="location" id="location" placeholder="Work" /></td>
+				</tr>
+				<tr>
+					<th><label>Email address</label></th>
 					<td><input type="text" name="email_address" id="email_address" placeholder="neil@global.com" /></td>
-					<td><input type="submit" value="Save" /></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit" value="Save" />
+					</td>
 				</tr>
 			</table>
 		</div>
