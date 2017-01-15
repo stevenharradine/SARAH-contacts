@@ -51,13 +51,13 @@
 		</div>
 	</form>
 <?php
-		while (($row = mysql_fetch_array( $address_data )) != null) {
+		foreach ($address_data as $index => $record) {
 ?>
-		<p><?php echo $row['location']; ?></p>
+		<p><?php echo $record['location']; ?></p>
 		<p><?php echo $first_name; ?> <?php echo $last_name; ?></p>
-		<p><?php echo $row['street_number']; ?> <?php echo $row['street_name']; ?> <?php echo $row['street_type']; ?> <?php echo $row['street_direction']; ?></p>
-		<p><?php echo $row['city']; ?>, <?php echo $row['province']; ?> <?php echo $row['postal_code']; ?></p>
-		<p><?php echo $row['country']; ?></p>
+		<p><?php echo $record['street_number']; ?> <?php echo $record['street_name']; ?> <?php echo $record['street_type']; ?> <?php echo $record['street_direction']; ?></p>
+		<p><?php echo $record['city']; ?>, <?php echo $record['province']; ?> <?php echo $record['postal_code']; ?></p>
+		<p><?php echo $record['country']; ?></p>
 <?php
 		}
 ?>

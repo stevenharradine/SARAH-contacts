@@ -25,11 +25,11 @@
 		</div>
 		<table>
 <?php
-		while (($row = mysql_fetch_array( $email_data )) != null) {
+		foreach ($email_data as $index => $record) {
 ?>
 				<tr>
-					<td><?php echo $row['location']; ?></td>
-					<td><a href="mailto: <?php echo $row['email']; ?>"><?php echo $row['email']; ?></a></td>
+					<td><?php echo $record['location']; ?></td>
+					<td><a href="mailto: <?php echo $record['email']; ?>"><?php echo $record['email']; ?></a></td>
 				</tr>
 <?php
 		}

@@ -25,11 +25,11 @@
 		</div>
 		<table>
 <?php
-		while (($row = mysql_fetch_array( $phone_data )) != null) {
+		foreach ($phone_data as $index => $record) {
 ?>
 				<tr>
-					<td><?php echo $row['location']; ?></td>
-					<td><a href="tel: <?php echo $row['phonenumber']; ?>"><?php echo format_phone ($row['phonenumber']); ?></a></td>
+					<td><?php echo $record['location']; ?></td>
+					<td><a href="tel: <?php echo $record['phonenumber']; ?>"><?php echo format_phone ($record['phonenumber']); ?></a></td>
 					<td></td>
 				</tr>
 <?php

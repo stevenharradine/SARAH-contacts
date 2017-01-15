@@ -25,13 +25,13 @@
 	
 	<div>
 <?php
-		while (($row = mysql_fetch_array( $notes_data )) != null) {
-			$title = $row['title'];
-			$note = $row['note'];
+		foreach ($notes_data as $index => $record) {
+			$title = $record['title'];
+			$note = $record['note'];
 ?>
 			<div>
-				<h2><?php echo $row['title']; ?></h2>
-				<p><?php echo $row['note']; ?></p>
+				<h2><?php echo $title; ?></h2>
+				<p><?php echo $note; ?></p>
 			</div>
 <?php
 		}
