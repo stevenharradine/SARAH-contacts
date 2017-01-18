@@ -26,6 +26,8 @@
 		
 		$email_address		= request_isset ('email_address');
 
+		$frontend_debug = request_isset ('debug');
+
 		switch ($page_action) {
 			case 'add_contact' :
 				$db_add_success	= ContactManager::addRecord ($first_name, $middle_name, $last_name);
