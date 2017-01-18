@@ -10,22 +10,35 @@
 		}
 		public function getAllContacts () {
 			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
 			$sql = <<<EOD
-	SELECT *
-	FROM `contacts`
-	WHERE `USER_ID`='$USER_ID'
-	ORDER BY last_name,
-		first_name,
-		middle_name
-	ASC;
+SELECT
+	*
+FROM
+	`contacts`
+WHERE
+	`USER_ID`='$USER_ID'
+ORDER BY
+	last_name,
+	first_name,
+	middle_name
+ASC
 EOD;
 
-			$contacts = array ();
+			$result = $link->query($sql);
 
-			if ($result = $link->query($sql)) {
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
+
+			$contacts = array ();
+			if ($result) {
 				while ( $row = $result->fetch_object() ) {
 					$contacts[] = array (
 						"CONTACT_ID" => $row->CONTACT_ID,
@@ -41,11 +54,13 @@ EOD;
 
 		public function addRecord ($first_name, $middle_name, $last_name) {
 			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
 			$sql = <<<EOD
-	INSERT INTO `sarah`.`contacts` (
+INSERT INTO
+	`sarah`.`contacts` (
 		`USER_ID`,
 		`first_name`,
 		`middle_name`,
@@ -55,19 +70,30 @@ EOD;
 		'$first_name',
 		'$middle_name',
 		'$last_name'
-	);
+	)
 EOD;
 
-			return $link->query($sql);
+			$result = $link->query($sql);
+
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
+
+			return $result;
 		}
 
 		public function addPhone ($CONTACT_ID, $location, $phone_number) {
 			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
 			$sql = <<<EOD
-	INSERT INTO `sarah`.`contacts_phonenumber` (
+INSERT INTO
+	`sarah`.`contacts_phonenumber` (
 		`CONTACT_ID`,
 		`location`,
 		`phonenumber`
@@ -75,19 +101,29 @@ EOD;
 		'$CONTACT_ID',
 		'$location',
 		'$phone_number'
-	);
+	)
 EOD;
+			$result = $link->query($sql);
 
-			return $link->query($sql);
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
+
+			return $result;
 		}
 
 		public function addEmail ($CONTACT_ID, $location, $email_address) {
 			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
 			$sql = <<<EOD
-	INSERT INTO  `sarah`.`contacts_email` (
+INSERT INTO
+	`sarah`.`contacts_email` (
 		`CONTACT_ID`,
 		`location`,
 		`email`
@@ -95,19 +131,29 @@ EOD;
 		'$CONTACT_ID',
 		'$location',
 		'$email_address'
-	);
+	)
 EOD;
+			$result = $link->query($sql);
 
-			return $link->query($sql);
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
+
+			return $result;
 		}
 
 		public function addAddress ($CONTACT_ID, $location, $street_number, $street_name, $street_type, $street_direction, $postal_code, $city, $province, $country) {
 			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
 			$sql = <<<EOD
-	INSERT INTO `sarah`.`contacts_address` (
+INSERT INTO
+	`sarah`.`contacts_address` (
 		`CONTACT_ID`,
 		`location`,
 		`street_number`,
@@ -129,19 +175,29 @@ EOD;
 		'$city',
 		'$province',
 		'$country'
-	);
+	)
 EOD;
+			$result = $link->query($sql);
 
-			return $link->query($sql);
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
+
+			return $result;
 		}
 
 		public function addNote ($CONTACT_ID, $title, $note) {
 			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
 			$sql = <<<EOD
-	INSERT INTO `sarah`.`contacts_notes` (
+INSERT INTO
+	`sarah`.`contacts_notes` (
 		`CONTACT_ID`,
 		`title`,
 		`note`
@@ -149,25 +205,46 @@ EOD;
 		'$CONTACT_ID',
 		'$title',
 		'$note'
-	);
+	)
 EOD;
-
 			$result = $link->query($sql);
+
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
 
 			return $result;
 		}
 
 		public function getPhone ($CONTACT_ID) {
+			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
+			$USER_ID = $sessionManager->getUserId();
+
 			$sql = <<<EOD
-	SELECT *
-	FROM `contacts_phonenumber`
-	WHERE `CONTACT_ID` = '$CONTACT_ID'
+SELECT
+	*
+FROM
+	`contacts_phonenumber`
+WHERE
+	`CONTACT_ID` = '$CONTACT_ID'
 EOD;
 
-			$phonenumbers = array ();
+			$result = $link->query($sql);
 
-			if ($result = $link->query($sql)) {
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
+
+			$phonenumbers = array ();
+			if ($result) {
 				while ( $row = $result->fetch_object() ) {
 					$phonenumbers[] = array (
 						"location" => $row->location,
@@ -180,15 +257,31 @@ EOD;
 		}
 
 		public function getAddress ($CONTACT_ID) {
+			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
-			$sql = <<<EOD
-	SELECT *
-	FROM `contacts_address`
-	WHERE `CONTACT_ID` = '$CONTACT_ID'
-EOD;
-			$addresses = array ();
+			$USER_ID = $sessionManager->getUserId();
 
-			if ($result = $link->query($sql)) {
+			$sql = <<<EOD
+SELECT
+	*
+FROM
+	`contacts_address`
+WHERE
+	`CONTACT_ID` = '$CONTACT_ID'
+EOD;
+
+			$result = $link->query($sql);
+
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
+
+			$addresses = array ();
+			if ($result) {
 				while ( $row = $result->fetch_object() ) {
 					$addresses[] = array (
 						"location" => $row->location,
@@ -208,15 +301,30 @@ EOD;
 		}
 
 		public function getEmail ($CONTACT_ID) {
+			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
-			$sql = <<<EOD
-	SELECT *
-	FROM `contacts_email`
-	WHERE `CONTACT_ID` = '$CONTACT_ID'
-EOD;
-			$emailaddresses = array ();
+			$USER_ID = $sessionManager->getUserId();
 
-			if ($result = $link->query($sql)) {
+			$sql = <<<EOD
+SELECT
+	*
+FROM
+	`contacts_email`
+WHERE
+	`CONTACT_ID` = '$CONTACT_ID'
+EOD;
+			$result = $link->query($sql);
+
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
+
+			$emailaddresses = array ();
+			if ($result) {
 				while ( $row = $result->fetch_object() ) {
 					$emailaddresses[] = array (
 						"location" => $row->location,
@@ -229,7 +337,11 @@ EOD;
 		}
 
 		public function getNotes ($CONTACT_ID) {
+			global $sessionManager;
+			global $frontend_debug;
 			$link = ContactManager::get_link();
+			$USER_ID = $sessionManager->getUserId();
+
 			$sql = <<<EOD
 SELECT
 	*
@@ -238,9 +350,17 @@ FROM
 WHERE
 	`CONTACT_ID` = '$CONTACT_ID'
 EOD;
-			$notes = array ();
+			$result = $link->query($sql);
 
-			if ($result = $link->query($sql)) {
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
+
+			$notes = array ();
+			if ($result) {
 				while ( $row = $result->fetch_object() ) {
 					$notes[] = array (
 						"title" => $row->title,
@@ -253,16 +373,30 @@ EOD;
 		}
 
 		public function getName ($CONTACT_ID) {
+			global $sessionManager;
+			global $frontend_debug;
+			$link = ContactManager::get_link();
+			$USER_ID = $sessionManager->getUserId();
+
 			$link = ContactManager::get_link();
 			$sql = <<<EOD
-	SELECT *
-	FROM `contacts`
-	WHERE `CONTACT_ID` = '$CONTACT_ID';
+SELECT
+	*
+FROM
+	`contacts`
+WHERE
+	`CONTACT_ID` = '$CONTACT_ID'
 EOD;
+			$result = $link->query($sql);
 
-//			$name = array ();
+			if ($frontend_debug) {
+				echo '<div class="debug">';
+				echo $sql;
+				echo var_dump($result);
+				echo '</div>';
+			}
 
-			if ($result = $link->query($sql)) {
+			if ($result) {
 				while ( $row = $result->fetch_object() ) {
 					$name = array (
 						"first_name" => $row->first_name,
