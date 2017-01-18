@@ -10,7 +10,6 @@
 		}
 		public function getAllContacts () {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -30,7 +29,7 @@ EOD;
 
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -54,7 +53,6 @@ EOD;
 
 		public function addRecord ($first_name, $middle_name, $last_name) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -75,7 +73,7 @@ EOD;
 
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -87,7 +85,6 @@ EOD;
 
 		public function addPhone ($CONTACT_ID, $location, $phone_number) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -105,7 +102,7 @@ INSERT INTO
 EOD;
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -117,7 +114,6 @@ EOD;
 
 		public function addEmail ($CONTACT_ID, $location, $email_address) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -135,7 +131,7 @@ INSERT INTO
 EOD;
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -147,7 +143,6 @@ EOD;
 
 		public function addAddress ($CONTACT_ID, $location, $street_number, $street_name, $street_type, $street_direction, $postal_code, $city, $province, $country) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -179,7 +174,7 @@ INSERT INTO
 EOD;
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -191,7 +186,6 @@ EOD;
 
 		public function addNote ($CONTACT_ID, $title, $note) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -209,7 +203,7 @@ INSERT INTO
 EOD;
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -221,7 +215,6 @@ EOD;
 
 		public function getPhone ($CONTACT_ID) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -236,7 +229,7 @@ EOD;
 
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -258,7 +251,6 @@ EOD;
 
 		public function getAddress ($CONTACT_ID) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -273,7 +265,7 @@ EOD;
 
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -302,7 +294,6 @@ EOD;
 
 		public function getEmail ($CONTACT_ID) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -316,7 +307,7 @@ WHERE
 EOD;
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -338,7 +329,6 @@ EOD;
 
 		public function getNotes ($CONTACT_ID) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -352,7 +342,7 @@ WHERE
 EOD;
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
@@ -374,7 +364,6 @@ EOD;
 
 		public function getName ($CONTACT_ID) {
 			global $sessionManager;
-			global $frontend_debug;
 			$link = ContactManager::get_link();
 			$USER_ID = $sessionManager->getUserId();
 
@@ -389,7 +378,7 @@ WHERE
 EOD;
 			$result = $link->query($sql);
 
-			if ($frontend_debug) {
+			if ($_COOKIE['frontend_debug']) {
 				echo '<div class="debug">';
 				echo $sql;
 				echo var_dump($result);
